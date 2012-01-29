@@ -34,3 +34,6 @@
 	excludesfile = ~/.gitignore
 [push]
 	default = matching
+[user]
+	name = Jacobi Carter
+	email = cobi@giftiki.com
