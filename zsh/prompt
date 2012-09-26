@@ -143,12 +143,12 @@ function updateprompt () {
 		if [[ -n ${remote} ]] ; then
 			# for git prior to 1.7
 			# ahead=$(git rev-list origin/${hook_com[branch]}..HEAD | wc -l)
-			local ahead=$(git rev-list ${branch}@{upstream}..HEAD 2>/dev/null | wc -l)
+			local ahead="$(git rev-list ${branch}@{upstream}..HEAD 2>/dev/null | wc -l)"
 			gitstatus+=( "${GREEN}+${ahead}${GRAY}" )
 
 			# for git prior to 1.7
 			# behind=$(git rev-list HEAD..origin/${hook_com[branch]} | wc -l)
-			local behind=$(git rev-list HEAD..${branch}@{upstream} 2>/dev/null | wc -l)
+			local behind="$(git rev-list HEAD..${branch}@{upstream} 2>/dev/null | wc -l)"
 			gitstatus+=( "${RED}-${behind}${GRAY}" )
 
 			remotepart="${RESETCOLOR}${GRAY}[${remote} ${(j:/:)gitstatus}]${RESETCOLOR}"
