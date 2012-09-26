@@ -101,7 +101,7 @@ git_prompt_status() {
 }
 function updateprompt () {
 	if havegit ; then
-		local gitdir="$(readlink -m $(git rev-parse --git-dir 2>/dev/null))"
+		local gitdir="$(python -c 'import os,sys;print os.path.realpath(sys.argv[1])' $(git rev-parse --git-dir 2>/dev/null))"
 		local repodir="$(dirname "${gitdir}")"
 		local reponame="$(basename "${repodir}")"
 		local curdir="$(pwd)"
