@@ -68,6 +68,7 @@ ZSH_THEME_GIT_PROMPT_MODIFIED="!"
 ZSH_THEME_GIT_PROMPT_DELETED="-"
 ZSH_THEME_GIT_PROMPT_UNMERGED="&"
 ZSH_THEME_GIT_PROMPT_RENAMED=">"
+ZSH_THEME_GIT_PROMPT_SUBMODULE="_"
 git_prompt_status() {
 	INDEX=$(git status --porcelain 2> /dev/null)
 	STATUS=""
@@ -96,6 +97,9 @@ git_prompt_status() {
 	fi
 	if $(echo "$INDEX" | grep '^UU ' &> /dev/null); then
 		STATUS="$ZSH_THEME_GIT_PROMPT_UNMERGED$STATUS"
+	fi
+	if $(cd "$1" ; git submodule status --recursive | egrep '^(\+|-)' &> /dev/null); then
+		STATUS="$ZSH_THEME_GIT_PROMPT_SUBMODULE$STATUS"
 	fi
 	echo $STATUS
 }
@@ -158,7 +162,7 @@ function updateprompt () {
 			stashes=$(git stash list 2>/dev/null | wc -l)
 			stashpart="${RESETCOLOR}${GRAY}(${GREEN}${stashes}${GRAY} stashed)${RESETCOLOR}"
 		fi
-		local stats="$(git_prompt_status)"
+		local stats="$(git_prompt_status "${repodir}")"
 		PROMPT=${RESETCOLOR}${HOSTCOLOR}$'%n@'${LHOSTNAME}${BLACKCOLOR}':'${PATHCOLOR}"${reponame} ${RED}${branch}${YELLOW}${stats}${BLACKCOLOR}${additional} ${PATHCOLOR}"$'%45<...<'"${repopath}"' %(?..'${BOLDERRORCOLOR}$')%(!.#.$) '${RESETCOLOR}
 		RPROMPT=${RESETCOLOR}${stashpart}${remotepart}$'%1(j.'${JOBCOLOR}$'[%j].)%(?..'${ERRORCOLOR}$'[%?])'${CLOCKCOLOR}$'[%t]'${RESETCOLOR}
 		cdpath=( . "$repodir" ~ ~/Giftikigit ~/launchrockgit ~/loagit ~/git .. )
