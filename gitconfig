@@ -21,6 +21,7 @@
 	cat  = show
 	list = show
 	ls   = show
+	subup = submodule update --init --recursive
 
 	untrack-ignored = !git-untracked-ignored
 	info = !git-info
