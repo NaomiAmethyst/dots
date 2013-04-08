@@ -23,7 +23,6 @@
 	ls   = show
 	subup = submodule update --init --recursive
 	bm = merge --no-ff --no-commit --log
-
 	untrack-ignored = !git-untracked-ignored
 	info = !git-info
 	amend = commit --amend -C HEAD
@@ -40,4 +39,4 @@
 	default = matching
 [user]
 	name = Jacobi Carter
-	email = cobi@jacobicarter.com
+	email = jcarter@okta.com
