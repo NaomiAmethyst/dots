@@ -17,10 +17,10 @@ endif
 
 " ---- General Setup ----
 set nocompatible           " Don't emulate vi's limitations
-set tabstop=8              " 4 spaces for tabs
-set shiftwidth=8           " 4 spaces for indents
+set tabstop=2              " 4 spaces for tabs
+set shiftwidth=2           " 4 spaces for indents
 set smarttab               " Tab next line based on current line
-"set expandtab             " Spaces for indentation
+set expandtab             " Spaces for indentation
 set autoindent             " Automatically indent next line
 if has('smartindent')
    set smartindent            " Indent next line based on current line
@@ -73,12 +73,12 @@ if has('eval')
    endfun
 
    let g:detectindent_preferred_expandtab = 0
-   let g:detectindent_preferred_indent = 4
+   let g:detectindent_preferred_indent = 2
 
    fun! <SID>DetectDetectIndent()
       try
          :DetectIndent
-"      catch
+      catch
       endtry
    endfun
 endif
@@ -86,7 +86,7 @@ endif
 if has('autocmd')
    autocmd BufEnter * :call WideFold()
    if has('eval')
- "     autocmd BufReadPost * :call s:DetectDetectIndent()
+      autocmd BufReadPost * :call s:DetectDetectIndent()
    endif
 
    if has('viminfo')
@@ -392,6 +392,6 @@ endif
 
 set t_RV=
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 call pathogen#infect()
