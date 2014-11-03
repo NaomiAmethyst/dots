@@ -13,3 +13,4 @@ tags
 *.log
 *.dvi
 *.mode*v*
+*.unencrypted.json
