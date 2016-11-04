@@ -8,6 +8,9 @@ fix_term ()
 		echo $1
 	else
 		case $1 in
+			xterm-termite)
+				fix_term xterm-256colors
+			;;
 			rxvt|xterm?*|kterm|putty|screen)
 				fix_term xterm
 			;;
@@ -90,7 +93,7 @@ if command -v infocmp >/dev/null 2>&1 ; then
 	export TERM
 
 	case $TERM in
-		*256*)
+		*256*|xterm-termite)
 			alias screen="screen -T `fix_term xterm-256color`"
 		;;
 		linux)

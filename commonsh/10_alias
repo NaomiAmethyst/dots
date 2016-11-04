@@ -99,5 +99,6 @@ alias du='du -h'
 alias ping='ping -c4'
 alias cobiwin='rdesktop -u Cobi -g 1440x900 -x 0x80 -B cobiwin.cobi.ninja'
 alias cssh='cssh -l root'
+alias ssh='TERM=xterm-256color ssh'
 
 command -v time >/dev/null 2>&1 && alias time='command time'

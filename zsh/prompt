@@ -6,7 +6,7 @@ BOLDERRORCOLOR=''
 BLACKCOLOR=''
 
 case "${TERM}" in
-	*256color*)
+	*256color*|xterm-termite)
 		RESETCOLOR=$'%{\e[00;00m%}'
 		if [ -z "${SSH_TTY}" ] ; then
 			HOSTCOLOR=$'%{\e[01;38;5;113m%}'
