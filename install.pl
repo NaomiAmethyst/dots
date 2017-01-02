@@ -84,6 +84,7 @@ my %links = (
 
 	'git-info'            => 'bin/git-info',
 	'git-untrack-ignored' => 'bin/git-untracked-ignored',
+	'git-lfs'             => 'bin/git-lfs',
 
 	gdbinit => '.gdbinit',
 );
