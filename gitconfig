@@ -29,6 +29,7 @@
 	amend = commit --amend -C HEAD
 	r = "!_(){ git log --graph --oneline --all -40 --decorate=short --color=always $@ | php -r '$log = Array(); foreach( explode( \"\\n\", trim( shell_exec( \"git log --all --pretty=format:\\\"%h %Cgreen(%cr) %C(bold blue)<%an>%Creset\\\" --abbrev-commit --date=relative -5000\" ) ) ) as $line ) { list( $commit, $decor ) = explode( \" \", $line, 2 ); $log[ $commit ] = $decor; } foreach( explode( \"\\n\", trim( file_get_contents( \"php://stdin\" ) ) ) as $line ) { if( preg_match( \"#([a-f0-9]{7})#\", $line, $m ) ) { echo $line . \" \" . $log[ $m[ 1 ] ] . \"\\n\"; } else { echo $line . \"\\n\"; } }'; } ; _"
 	dc = diff --cached
+	change-commits = "!f() { VAR=$1; OLD=$2; NEW=$3; shift 3; git filter-branch --env-filter \"if [[ \\\"$`echo $VAR`\\\" = '$OLD' ]]; then export $VAR='$NEW'; fi\" $@; }; f"
 [color]
 	diff = auto
 	status = auto
@@ -39,10 +40,13 @@
 [push]
 	default = matching
 [user]
-	name = Jacobi Carter
-	email = jcarter@okta.com
+	name = Naomi Persephone Amethyst
+	email = naomi@amethyst.name
+	signingkey = 89CA5D5A1F99F982
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[commit]
+	gpgsign = true

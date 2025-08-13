@@ -319,7 +319,7 @@ endif
 "nnoremap <esc> :noh<return><esc>
 
 " Disable q and Q
-map q <Nop>
+"map q <Nop>
 map Q <Nop>
 
 " Toggle numbers with F12

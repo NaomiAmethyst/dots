@@ -21,8 +21,8 @@ $if mode=emacs
 		"\e[1;5D": backward-word
 		"\e[5C": forward-word
 		"\e[5D": backward-word
-		"\eOC": forward-word
-		"\eOD": backward-word
+		#"\eOC": forward-word
+		#"\eOD": backward-word
 		"\eOc": forward-word
 		"\eOd": backward-word
 		"\e[c": forward-word
@@ -42,8 +42,8 @@ $if mode=emacs
 		"\e[1;5D": backward-word
 		"\e[5C": forward-word
 		"\e[5D": backward-word
-		"\eOC": forward-word
-		"\eOD": backward-word
+		#"\eOC": forward-word
+		#"\eOD": backward-word
 		"\eOc": forward-word
 		"\eOd": backward-word
 		"\e[c": forward-word
