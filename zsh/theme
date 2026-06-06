@@ -1,0 +1,28 @@
+if [[ -o interactive && -t 1 ]]; then
+  typeset -A theme=(
+    0  '#0f0818'   # black        unchanged
+    1  '#ce64ab'   # red          ~320  rose-magenta (warm edge of band)
+    #2  '#8c70b2'   # green        ~265  muted blue-violet (desaturated, the quiet slot)
+    2  '#86b09a'   # green        ~265  muted blue-violet (desaturated, the quiet slot)
+    3  '#cd7ac6'   # yellow       ~305  light orchid (lifted, warm-ish)
+    4  '#655ccc'   # blue         ~245  indigo (deep)
+    5  '#a64fd9'   # magenta      ~278  vivid violet — anchor, unchanged
+    6  '#6f9ad8'   # cyan         ~220  azure (cool edge of band)
+    7  '#bb99ff'   # white        unchanged
+    8  '#4e4368'   # br black     unchanged
+    9  '#e892c6'   # br red       ~320
+    10 '#b4a2d6'   # br green     ~265
+    11 '#e4a6dc'   # br yellow    ~305
+    12 '#8f88e6'   # br blue      ~245
+    13 '#c98ae8'   # br magenta   ~278  unchanged
+    14 '#9cc0ea'   # br cyan      ~220
+    15 '#ddccff'   # br white     unchanged
+  )
+  for i fg in ${(kv)theme}; do
+    printf '\e]4;%d;%s\e\\' $i $fg
+  done
+  printf '\e]10;%s\e\\' '#bb99ff'   # default fg
+  printf '\e]11;%s\e\\' '#080010'   # default bg
+  printf '\e]5;0;%s\e\\' '#ddccff'   # xterm bold color (needs colorBDMode); ignored elsewhere
+fi
+#  vim: set ts=2 sw=2 tw=0 filetype=zsh : 

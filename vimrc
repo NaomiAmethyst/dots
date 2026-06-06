@@ -142,11 +142,11 @@ if has('eval')
    endfun
 
    if has("gui_running")
-      call LoadColorScheme("wombat:twilight256:desert")
+      call LoadColorScheme("wombat_amethyst:twilight256:desert")
    elseif &t_Co == 256
-      call LoadColorScheme("wombat:twilight256:inkpot")
+      call LoadColorScheme("wombat_amethyst:twilight256:inkpot_amethyst")
    elseif &t_Co == 88
-      call LoadColorScheme("wombat:zellner")
+      call LoadColorScheme("wombat_amethyst:zellner")
    else
       call LoadColorScheme("desert:darkblue:zellner")
    endif
